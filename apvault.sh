@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Point me to your collection!
+# Absolute path to your collection dirs.
 Vault_Videos_Path="/data/Videos"
 Vault_Images_Path="/data/Pictures"
+
 # Change to true when configured. Make sure you review bannedKeywords.lst and remove anything you want to keep!
 isConfigured=false
 
