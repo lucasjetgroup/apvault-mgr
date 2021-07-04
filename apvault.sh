@@ -39,6 +39,10 @@ function sub_ingest () {
 		exit 1;
 	fi
 
+	if [[ "$targetPath" = "." ]]; then
+		# expand current directory
+		targetPath="$(pwd)"
+	fi
 	decompress.recursiveDecompressByPath "$targetPath" && \
 	lintRoller.lintRollByPath "$SCRIPT_PATH" "$targetPath" && \
 	ingest.ingestByPathInteractive "$targetPath" "$Vault_Videos_Path" "$Vault_Images_Path"

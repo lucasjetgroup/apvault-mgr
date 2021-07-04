@@ -1,10 +1,11 @@
 #!/bin/bash
 
 function ingest.rsyncImages () {
-	fromPath="$1"
+	fromPath=$(echo "$1" | sed 's:/*$::')
 	toPath="$2"
-	rsync -avhmP --remove-source-files --info=progress2 --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
-		--include='**/*.png' --include='**/*.PNG' --include='**/*.jpeg' --include='**/*.JPEG' --include='**/*.gif' --include='**/*.GIF' --exclude='*' "$fromPath" "$toPath";
+	rsync -ahmP --remove-source-files --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
+		--include='**/*.png' --include='**/*.PNG' --include='**/*.jpeg' --include='**/*.JPEG' \
+		--include='**/*.gif' --include='**/*.GIF' --exclude='*' "$fromPath" "$toPath";
 	return $?
 }
 
@@ -37,24 +38,32 @@ function ingest.ingestByPathInteractive () {
 		return 1;
 	fi
 
-	#get absolute target path
-	targetPath="$(pwd)"/"$targetPath"/
-
 	# prompt for vault-relative path, create if missing
-	cd "$vaultVideosPath" || return 1 # allow tab completion
+	callDir="$(pwd)"
+	cd "$vaultVideosPath" || return 1 # allow tab completion from vault path
 	echo
 	read -r -e -p "APVault: Where should we ingest this? (vault-relative, hit TAB): " VAULT_PATH
 	VAULT_PATH="$VAULT_PATH"/
 	mkdir -p "$vaultVideosPath"/"$VAULT_PATH" "$vaultImagesPath"/"$VAULT_PATH"
 
-	ingest.rsyncImages "$targetPath" "$vaultImagesPath"/"$VAULT_PATH"
+	echo "APVault: Ingesting files..."
+	cd "$callDir" || return 1
 
+	if [[ ! "$vaultVideosPath" = "$vaultImagesPath" ]]; then # if not using split directories, skip images step
+		ingest.rsyncImages "$targetPath" "$vaultImagesPath"/"$VAULT_PATH"
+		# delete now-empty folders
+		find "$targetPath" -depth -type d -empty -delete
+	fi
 	# move everything else, use mv where possible
 	mv -v --no-clobber "$targetPath" "$vaultVideosPath"/"$VAULT_PATH"
-	rsync -avhmP --remove-source-files --info=progress2 "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
 
+	if [[ -d "$targetPath" ]]; then
+		#there are directory name conflicts, use rsync to copy what we can, leaving what we can't
+		targetPathNoTrailingSlash=$(echo $targetPath | sed 's:/*$::')
+		rsync -ahmP --remove-source-files "$targetPathNoTrailingSlash" "$vaultVideosPath"/"$VAULT_PATH";
+		# delete now-empty folders
+		find "$targetPath" -depth -type d -empty -delete
+	fi
 	echo
-	echo "APVault: Finished ingesting, cleaning up..."
-	# delete now-empty folders
-	find "$targetPath" -depth -type d -empty -delete
+	echo "APVault: Finished ingesting."
 }
