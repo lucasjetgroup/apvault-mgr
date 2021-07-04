@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function ingest.rsyncImages () {
-	fromPath=$(echo "$1" | sed 's:/*$::')
+	fromPath="$1"
 	toPath="$2"
 	rsync -ahmP --remove-source-files --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
 		--include='**/*.png' --include='**/*.PNG' --include='**/*.jpeg' --include='**/*.JPEG' \
@@ -38,6 +38,9 @@ function ingest.ingestByPathInteractive () {
 		return 1;
 	fi
 
+	if [[ "${targetPath: -1}" == '/' ]]; then
+		echo "INFO: APVault: Target has trailing slash, only ingesting contents."
+	fi
 	# prompt for vault-relative path, create if missing
 	callDir="$(pwd)"
 	cd "$vaultVideosPath" || return 1 # allow tab completion from vault path
@@ -54,13 +57,16 @@ function ingest.ingestByPathInteractive () {
 		# delete now-empty folders
 		find "$targetPath" -depth -type d -empty -delete
 	fi
-	# move everything else, use mv where possible
-	mv -v --no-clobber "$targetPath" "$vaultVideosPath"/"$VAULT_PATH"
 
+	# move everything else, use mv where possible
+	mvTarget="$targetPath"
+	if [[ "${targetPath: -1}" == '/' ]]; then
+		mvTarget="$mvTarget""*"
+	fi
+	mv -v --no-clobber $mvTarget "$vaultVideosPath"/"$VAULT_PATH"
 	if [[ -d "$targetPath" ]]; then
 		#there are directory name conflicts, use rsync to copy what we can, leaving what we can't
-		targetPathNoTrailingSlash=$(echo $targetPath | sed 's:/*$::')
-		rsync -ahmP --remove-source-files "$targetPathNoTrailingSlash" "$vaultVideosPath"/"$VAULT_PATH";
+		rsync -ahmP --remove-source-files "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
 		# delete now-empty folders
 		find "$targetPath" -depth -type d -empty -delete
 	fi

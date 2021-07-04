@@ -24,7 +24,7 @@ function lintRoller.lintRollBannedKeywords () {
 
 	if [[ $regexes_found -gt 1 ]]; then
 		echo "APVault: Loaded ""$regexes_found"" banned regexes, searching and destroying matches in ""$pathToLintRoll""..."
-		banned_findarg="find "\""$pathToLintRoll"\"" ${banned_findarg::-15}\) -print"
+		banned_findarg="find "\""$pathToLintRoll"\"" ${banned_findarg::-15}\) -printf 'Lint-rolling %p.'"
 		# handle dry-run
 		if [[ ! $3 = "--dry-run" ]]; then
 			deleteOp=" -delete"
@@ -62,7 +62,7 @@ function lintRoller.lintRollDerivedContent {
 	done < "$derivedContentKeywordsFile"
 
 	if [[ $regexes_found -gt 1 ]]; then
-		screens_findarg="find "\""$pathToLintRoll"\"" ${screens_findarg::-15}\) -print"
+		screens_findarg="find "\""$pathToLintRoll"\"" ${screens_findarg::-15}\) -printf 'Lint-rolling %p.'"
 		# handle dry-run
 		if [[ ! $3 = "--dry-run" ]]; then
 			screens_findarg+=" -exec rm -rf \"{}\" +"
@@ -92,7 +92,7 @@ function lintRoller.lintRollByPath () {
 			lintRoller.lintRollDerivedContent "$1" "$pathToRoll" "$3"
 		    ;;
     		    * )
-       		 	echo "Exiting."
+       		 	echo "APVault: Skipping lint-roll."
         		return 0
     		;;
 		esac

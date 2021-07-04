@@ -11,7 +11,7 @@ APVault-mgr is a utility to assist in growing, weeding, and managing extremely l
 
 ## Get Started
 
-You need to edit the top of `apvault.sh` to point to your collection, and review `bannedKeywords.lst` to your tastes.
+You need to edit the top of `apvault` to point to your collection, and review `bannedKeywords.lst` to your tastes.
 
 ## Usage
 
@@ -20,13 +20,13 @@ You need to edit the top of `apvault.sh` to point to your collection, and review
 $ git clone https://github.com/kermieisinthehouse/apvault-mgr
 
 # Run the lint roller on a path
-$ ./apvault.sh lint-roll Downloads/
+$ ./apvault lint-roll Downloads/
 
-# Ingest a path's contents into the vault, you will be prompted for a vault-relative path
-$ ./apvault.sh ingest MyFavoriteCamgirl/
+# Ingest a path's contents into the vault, you will be prompted for a destination.
+$ ./apvault ingest MyFavoriteCamgirl/
 
 # Recursively decompress all archives in a directory
-$ ./apvault.sh decompress Photo_Archives_2009/
+$ ./apvault decompress Photo_Archives_2009/
 
 # Recursively move all images to a new path, keeping directory structure
 $ ./apvault copy-images MyMixedMedia/ MyPhotos/

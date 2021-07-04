@@ -68,9 +68,10 @@ apvault.sh lint-roll <path> [--dry-run]		Deletes unwanted files, see definitions
 apvault.sh decompress <path>			Recursively decompresses all .zip, .rar, .7z archives in the path.
 
 apvault.sh ingest <path>			Decompresses, lint-rolls, copies files into the vault. Will prompt for vault location.
-						Will not overwrite any files.
+						Leave a trailing slash '/' in the path to copy path contents, rather than the path.
 
 apvault.sh copy-images <path> <target path>	Copies all images in path into your images path, keeping the directory structure.
+						Leave a trailing slash '/' in the path to copy path contents, rather than the path.
 						Good for migrating into a Videos + Images structure for your collection.
 EOF
 }
