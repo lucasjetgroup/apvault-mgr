@@ -50,7 +50,7 @@ function ingest.ingestByPathInteractive () {
 	ingest.rsyncImages "$targetPath" "$vaultImagesPath"/"$VAULT_PATH"
 
 	# move everything else, use mv where possible
-	mv -v --no-clobber "$targetPath"/* "$vaultVideosPath"/"$VAULT_PATH"
+	mv -v --no-clobber "$targetPath" "$vaultVideosPath"/"$VAULT_PATH"
 	rsync -avhmP --remove-source-files --info=progress2 "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
 
 	echo
