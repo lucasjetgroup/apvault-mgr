@@ -17,20 +17,20 @@ You need to edit the top of `apvault.sh` to point to your collection, and review
 
 ```
 # Grab a copy from git
-git clone https://github.com/kermieisinthehouse/apvault-mgr
+$ git clone https://github.com/kermieisinthehouse/apvault-mgr
 
 # Run the lint roller on a path
-./apvault.sh lint-roll Downloads/
+$ ./apvault.sh lint-roll Downloads/
 
-# Init the vault and create file paths (only needed for ingest command)
-./apvault.sh init /mnt/encrypted/APVault/
-
-# Ingest a path's contents into the vault, using a vault-relative path
-./apvault.sh ingest MyFavoriteCamgirl/ Camgirls/OnlyFans/
+# Ingest a path's contents into the vault, you will be prompted for a vault-relative path
+$ ./apvault.sh ingest MyFavoriteCamgirl/
 
 # Recursively decompress all archives in a directory
-./apvault.sh decompress Photo_Archives_2009/
+$ ./apvault.sh decompress Photo_Archives_2009/
 
+# Recursively move all images to a new path, keeping directory structure
+$ ./apvault copy-images MyMixedMedia/ MyPhotos/
+$ mv MyMixedMedia MyVideos
 ```
 ## Lint-rolling your collection
 The lint roller is a powerful, configurable system for automatically cleaning your large collection of genres you don't want to collect, and screenshots and other filesystem detritus. Megapacks give you stuff you don't want? The file `bannedKeywords.lst` accepts emacs-style regexes that will be searched-and-destroyed in paths and filenames. For example, to rid your library of unwanted adult diaper content, simply adding the line `adult.?diaper` and running the lint-roller is often enough. The file `derivedContentKeywords.lst` contains regexes for items such as screenshots, thumbnails, and contact sheets. You can run the lint-roller over your existing collection, and it runs automatically over new content as it's being ingested. 
