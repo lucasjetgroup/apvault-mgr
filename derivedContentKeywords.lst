@@ -1,0 +1,32 @@
+####################
+#
+# Copyright 2021 kermie@arcticpornvault.org
+#
+# The following are Emacs-style regexes that can match the end of the filename, within two characters.
+####################
+
+# [ Screenshots ]
+scr
+screen.?shots?
+screen.?lists?
+screen.?grabs?
+screen.?caps?
+screen
+thumb
+thumb.?nails?
+contact.?sheets?
+video.?screens
+_s\.jpe?g
+thumbs?\.jpe?g
+\.mp4\.jpe?g
+\.avi\.jpe?g
+\.wmv\.jpe?g
+\.mkv\.jpe?g
+\.mov\.jpe?g
+\.mpe?g\.jpe/g
+
+# [ Operating System Files ]
+MACOSX
+thumbs\.db
+\.bridgesort
+\.ds_store
