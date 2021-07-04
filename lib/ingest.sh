@@ -3,7 +3,7 @@
 function ingest.rsyncImages () {
 	fromPath="$1"
 	toPath="$2"
-	rsync -avhmRP --remove-source-files --info=progress2 --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
+	rsync -avhmP --remove-source-files --info=progress2 --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
 		--include='**/*.png' --include='**/*.PNG' --include='**/*.jpeg' --include='**/*.JPEG' --include='**/*.gif' --include='**/*.GIF' --exclude='*' "$fromPath" "$toPath";
 	return $?
 }
@@ -51,7 +51,7 @@ function ingest.ingestByPathInteractive () {
 
 	# move everything else, use mv where possible
 	mv -v --no-clobber "$targetPath"/* "$vaultVideosPath"/"$VAULT_PATH"
-	rsync -avhmRP --remove-source-files --info=progress2 "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
+	rsync -avhmP --remove-source-files --info=progress2 "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
 
 	echo
 	echo "APVault: Finished ingesting, cleaning up..."

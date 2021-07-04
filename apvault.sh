@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Point me to your collection!
-Vault_Videos_Path="/data/Videos"
-Vault_Images_Path="/data/Pictures"
+Vault_Videos_Path="/mnt/encrypted/APVault/Videos"
+Vault_Images_Path="/mnt/encrypted/APVault/Pictures"
 # Change to true when configured. Make sure you review bannedKeywords.lst and remove anything you want to keep!
-isConfigured=false
+isConfigured=true
 
 # Do not edit below this line.
 ####################
@@ -42,6 +42,7 @@ function sub_ingest () {
 	decompress.recursiveDecompressByPath "$targetPath" && \
 	lintRoller.lintRollByPath "$SCRIPT_PATH" "$targetPath" && \
 	ingest.ingestByPathInteractive "$targetPath" "$Vault_Videos_Path" "$Vault_Images_Path"
+	return $?
 }
 
 function sub_copy-images () {
