@@ -46,9 +46,7 @@ function ingest.ingestByPathInteractive () {
 	cd "$vaultVideosPath" || return 1 # allow tab completion from vault path
 	echo
 	read -r -e -p "APVault: Where should we ingest this? (vault-relative, hit TAB): " VAULT_PATH
-	echo "$VAULT_PATH"
 	VAULT_PATH="${VAULT_PATH//\\}"/ # unescape string
-	echo "$VAULT_PATH"
 	mkdir -p "$vaultVideosPath"/"$VAULT_PATH" "$vaultImagesPath"/"$VAULT_PATH"
 
 	echo "APVault: Ingesting files..."
