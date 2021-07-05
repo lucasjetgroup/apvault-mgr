@@ -96,4 +96,5 @@ function lintRoller.lintRollByPath () {
         		return 0
     		;;
 		esac
+	echo
 }

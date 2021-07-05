@@ -37,4 +37,5 @@ function decompress.recursiveDecompressByPath () {
 		echo "APVault: Decompressing 7zs..."
 		find "$targetPath" -type f -iname '*.7z'  -print0 -execdir 7z x -y -o'{}_extracted' '{}' \; -delete
 	fi
+	echo
 }

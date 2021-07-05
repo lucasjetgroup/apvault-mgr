@@ -3,7 +3,7 @@
 function ingest.rsyncImages () {
 	fromPath="$1"
 	toPath="$2"
-	rsync -ahmP --remove-source-files --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
+	rsync -ahmP --ignore-existing --remove-source-files --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
 		--include='**/*.png' --include='**/*.PNG' --include='**/*.jpeg' --include='**/*.JPEG' \
 		--include='**/*.gif' --include='**/*.GIF' --exclude='*' "$fromPath" "$toPath";
 	return $?
@@ -46,7 +46,9 @@ function ingest.ingestByPathInteractive () {
 	cd "$vaultVideosPath" || return 1 # allow tab completion from vault path
 	echo
 	read -r -e -p "APVault: Where should we ingest this? (vault-relative, hit TAB): " VAULT_PATH
-	VAULT_PATH="$VAULT_PATH"/
+	echo "$VAULT_PATH"
+	VAULT_PATH="${VAULT_PATH//\\}"/ # unescape string
+	echo "$VAULT_PATH"
 	mkdir -p "$vaultVideosPath"/"$VAULT_PATH" "$vaultImagesPath"/"$VAULT_PATH"
 
 	echo "APVault: Ingesting files..."
@@ -59,14 +61,14 @@ function ingest.ingestByPathInteractive () {
 	fi
 
 	# move everything else, use mv where possible
-	mvTarget="$targetPath"
+	mvTarget=""
 	if [[ "${targetPath: -1}" == '/' ]]; then
-		mvTarget="$mvTarget""*"
+		mvTarget="*"
 	fi
-	mv -v --no-clobber $mvTarget "$vaultVideosPath"/"$VAULT_PATH"
+	mv -v --no-clobber "$targetPath"$mvTarget "$vaultVideosPath"/"$VAULT_PATH"
 	if [[ -d "$targetPath" ]]; then
 		#there are directory name conflicts, use rsync to copy what we can, leaving what we can't
-		rsync -ahmP --remove-source-files "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
+		rsync -ahmP --ignore-existing --remove-source-files "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
 		# delete now-empty folders
 		find "$targetPath" -depth -type d -empty -delete
 	fi
