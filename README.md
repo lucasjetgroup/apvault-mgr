@@ -34,8 +34,28 @@ $ ./apvault decompress Photo_Archives_2009/
 $ ./apvault copy-images MyMixedMedia/ MyPhotos/
 $ mv MyMixedMedia MyVideos
 ```
+
 ## Lint-rolling your collection
 The lint roller is a powerful, configurable system for automatically cleaning your large collection of genres you don't want to collect, and screenshots and other filesystem detritus. Megapacks give you stuff you don't want? The file `bannedKeywords.lst` accepts emacs-style regexes that will be searched-and-destroyed in paths and filenames. For example, to rid your library of unwanted adult diaper content, simply adding the line `adult.?diaper` and running the lint-roller is often enough. The file `derivedContentKeywords.lst` contains regexes for items such as screenshots, thumbnails, and contact sheets. You can run the lint-roller over your existing collection, and it runs automatically over new content as it's being ingested. 
+
+```
+$ apvault lint-roll ~/myPorn
+APVault: Run the lint roller on "~/myPorn"? This is a destructive action. (y/n): y
+APVault: Loaded 453 banned regexes, searching and destroying matches in ~/myPorn
+Lint-rolling scat-fetish-video.mp4.
+Lint-rolling solo-male-video.mp4.
+Lint-rolling vomit-gangbang.avi.
+
+APVault: Pruning content-derived files...
+Lint-rolling myPorn/Thumbs.db
+Lint-rolling myPorn/.MACOSX
+Lint-rolling myPorn/Screencaps.
+Lint-rolling myPorn/Screencaps/qcpblRg5LOzhjW7tjlTD5mrnLBTlqLtb.mp4.jpg.
+Lint-rolling myPorn/Screencaps/HkKoCJjwmATMVGhjoSIF2S4BS8rk7BSe.mp4.jpg.
+Lint-rolling myPorn/Screencaps/UosOsp7nOycEUIQlgauZhPWNtmBxqFme.mp4.jpg.
+Lint-rolling myPorn/Screencaps/0e6b14dddb465270d870801c05ae620d.mp4.jpg.
+Lint-rolling myPorn/Screencaps/5ec4699a6d25aff1664b9_720p.mp4.jpg.
+```
 
 ## Theory of Operation
 These tools were developed to help manage a library of 7+ million items.
