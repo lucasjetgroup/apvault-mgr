@@ -16,6 +16,7 @@ thumb
 thumb.?nails?
 contact.?sheets?
 video.?screens
+video.?stills
 _s\.jpe?g
 thumbs?\.jpe?g
 \.mp4\.jpe?g
@@ -24,6 +25,10 @@ thumbs?\.jpe?g
 \.mkv\.jpe?g
 \.mov\.jpe?g
 \.mpe?g\.jpe/g
+
+# [ Other ]
+warning-cover\.
+RARBG\.txt
 
 # [ Operating System Files ]
 MACOSX
