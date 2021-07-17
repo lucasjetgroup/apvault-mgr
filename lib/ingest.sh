@@ -69,6 +69,10 @@ function ingest.ingestByPathInteractive () {
 		rsync -ahmP --ignore-existing --remove-source-files "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
 		# delete now-empty folders
 		find "$targetPath" -depth -type d -empty -delete
+		if [[ -d "$targetPath" ]]; then
+			echo "APVault: Warning: Not all files have been ingested. APVault does not overwrite existing files."
+			return 1
+		fi
 	fi
 	echo
 	echo "APVault: Finished ingesting."
