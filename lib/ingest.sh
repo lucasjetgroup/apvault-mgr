@@ -5,7 +5,8 @@ function ingest.rsyncImages () {
 	toPath="$2"
 	rsync -ahmP --ignore-existing --remove-source-files --include='**/' --include='**/*.jpg' --include='**/*.JPG' \
 		--include='**/*.png' --include='**/*.PNG' --include='**/*.jpeg' --include='**/*.JPEG' \
-		--include='**/*.gif' --include='**/*.GIF' --exclude='*' "$fromPath" "$toPath";
+		--include='**/*.gif' --include='**/*.GIF' --include='**/*.zip' --include='**/*.rar' --include='**/*.7z' \
+		--exclude='*' "$fromPath" "$toPath";
 	return $?
 }
 

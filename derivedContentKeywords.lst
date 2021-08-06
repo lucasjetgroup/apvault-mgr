@@ -20,12 +20,15 @@ video.?screens?
 video.?stills?
 _s\.jpe?g
 thumbs?\.jpe?g
-\.mp4\.jpe?g
-\.avi\.jpe?g
-\.wmv\.jpe?g
-\.mkv\.jpe?g
-\.mov\.jpe?g
-\.mpe?g\.jpe/g
+\.mp4\.\(\(jpe?g\)\|\(gif\)\)
+\.avi\.\(\(jpe?g\)\|\(gif\)\)
+\.wmv\.\(\(jpe?g\)\|\(gif\)\)
+\.mkv\.\(\(jpe?g\)\|\(gif\)\)
+\.mov\.\(\(jpe?g\)\|\(gif\)\)
+\.mpe?g\.\(\(jpe?g\)\|\(gif\)\)
+\.m4v\.\(\(jpe?g\)\|\(gif\)\)
+\/ss
+\(\(screens\)\|\(samples\)\|\(thumbs\)\)\.\(\(zip\)\|\(rar\)\|\(7z\)\)_extracted
 
 # [ Other ]
 warning-cover\.

@@ -28,6 +28,7 @@ sph\.
 (cei)
 .* cei .*
 cei\.m
+cei.?encourag
 sissy
 sissie
 sissif
@@ -61,6 +62,8 @@ dungeon.?corp
 club.?dom
 strap.?on.?hell
 strap.?on.?slave
+strap.?some
+sklaven
 beta.?male
 beta.?loser
 .* loser .*
@@ -73,18 +76,22 @@ humiliat
 worthless
 degrad
 disgust
+friend.?zone
 man.?boob
 aroma.*sniff
 castrat
 small.?penis
-small.?dick
-small.?cock
-tiny.?penis
-tiny.?dick
-tiny.?cock
+baby.?penis
 little.?penis
-little.?cock
+tiny.?penis
+small.?dick
+baby.?dick
 little.?dick
+tiny.?dick
+small.?cock
+baby.?cock
+little.?cock
+tiny.?cock
 premature
 impoten
 
@@ -98,6 +105,7 @@ while.?husband
 husband.?watch
 share.*wife
 cheating
+cheats
 she.?will.?cheat
 subby.?hubby
 take.?my.?wife
@@ -201,7 +209,7 @@ black.?russian
 black.?finger
 black.?rub
 black.?up.?in
-black.?in.?the
+black.?in
 black.?friend
 black.?power
 black.?neigh
@@ -241,7 +249,7 @@ ghetto
 first.?black
 big.?black
 huge.?black
-chocolate
+choco
 .* bbc .*
 .* bbc_
 \/bbc
@@ -299,6 +307,7 @@ by.?bbc
 on.?bbc
 s.?bbc
 it.?black
+deep.?bbc
 bbc.?worship
 bbc.?cream
 bbc.?stroke
@@ -327,7 +336,6 @@ bangin.?black
 black.?bang
 craves?.?black
 black.?where
-black.?in.?white
 black.?on.?white
 white.?slave
 black.?filling
@@ -353,6 +361,7 @@ worst.?night
 lex.?on.?blond
 silver.?back
 big.?sean
+sean.?michael
 back.?2.?black
 fine.?ass.?bitch
 i.?got.?five
@@ -433,7 +442,7 @@ gay\.
 
 # [ Misc Extreme / Fetish ]
 feet
-foot
+foot[^a]
 suck.*toe
 soles
 toe.?suck

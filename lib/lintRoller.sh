@@ -88,8 +88,8 @@ function lintRoller.lintRollByPath () {
 	read -r -p "APVault: Run the lint roller on \"$pathToRoll\"? This is a destructive action. (y/n): " answer
 		case ${answer:0:1} in
 		    y|Y )
-			lintRoller.lintRollBannedKeywords "$1" "$pathToRoll" "$3"
 			lintRoller.lintRollDerivedContent "$1" "$pathToRoll" "$3"
+			lintRoller.lintRollBannedKeywords "$1" "$pathToRoll" "$3"
 		    ;;
     		    * )
        		 	echo "APVault: Skipping lint-roll."
