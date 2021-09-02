@@ -99,7 +99,7 @@ impoten
 bred.*bull
 bull.*breed
 breed.*bull
-cuck
+cuck[^q]
 hot.?wife
 while.?husband
 husband.?watch
@@ -127,7 +127,7 @@ police
 arrest
 doing.?time
 
-# [ Coerced / Blacklisted ]
+# [ Coercion Roleplay ]
 sleep.?assault
 tricky
 bang.?bus
@@ -144,7 +144,13 @@ pimped
 pimp.?you
 sell.?your.?gf
 shop.?lyft
-# Blacklisted, do not remove
+drug.?rape
+[^d]raped
+drugged
+rape.?section
+drugged.?assault
+
+# [ Blacklisted ] # do not remove
 girls.?do.?porn
 \/gdp\.
 ron.?jeremy
@@ -537,3 +543,4 @@ hardcore.*zip_extracted
 
 # [ Content Derived ]
 _thumbs?_
+_previews_

@@ -29,7 +29,8 @@ thumbs?\.jpe?g
 \.mpe?g\.\(\(jpe?g\)\|\(gif\)\)
 \.m4v\.\(\(jpe?g\)\|\(gif\)\)
 \/ss
-\(\(screens\)\|\(samples\)\|\(thumbs\)\)\.\(\(zip\)\|\(rar\)\|\(7z\)\)_extracted
+\(\(screens\)\|\(samples\)\|\(thumbs\)\|\(previews\)\)_?\.\(\(zip\)\|\(rar\)\|\(7z\)\)_extracted
+
 
 # [ Other ]
 warning-cover\.
