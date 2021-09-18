@@ -89,7 +89,7 @@ function lintRoller.flattenRedundantStructure () {
 	scriptPath="$1"
 	pathToLintRoll="$2"
 	redundantFolderNamesFile="$scriptPath"/definitions/redundantFolderNames.lst
-	redundant_findarg="\( -regex \".*"
+	redundant_findarg="\( -iregex \".*"
 	redundant_glue="\" -or -iregex \".*"
 	regexes_found=0
 	
