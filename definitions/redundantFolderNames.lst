@@ -1,0 +1,13 @@
+####################
+#
+# Copyright 2021 kermie@arcticpornvault.org
+#
+# The following are Emacs-style regexes that match the whole name of a directory
+####################
+\/video\(\(s\)\|\(z\)\)?
+\/vid\(\(s\)\|\(z\)\)?
+\/picture\(\(s\)\|\(z\)\)?
+\/pic\(\(s\)\|\(z\)\)?
+\/image\(\(s\)\|\(z\)\)?
+\/img\(\(s\)\|\(z\)\)?
+\/photo\(\(s\)\|\(z\)\)?

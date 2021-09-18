@@ -4,7 +4,7 @@
 Vault_Videos_Path="/data/Videos"
 Vault_Images_Path="/data/Pictures"
 
-# Change to true when configured. Make sure you review bannedKeywords.lst and remove anything you want to keep!
+# Change to true when configured. Make sure you review definitions/bannedKeywords.lst and remove anything you want to keep!
 isConfigured=false
 
 # Do not edit below this line.
@@ -26,6 +26,12 @@ function sub_lint-roll () {
 	targetPath="$2"
 	isDryRun="$3"
 	lintRoller.lintRollByPath "$SCRIPT_PATH" "$targetPath" "$isDryRun"
+}
+
+function sub_flatten () {
+	targetPath="$2"
+	isDryRun="$3"
+	lintRoller.flattenRedundantStructure "$SCRIPT_PATH" "$targetPath" "$isDryRun"
 }
 
 function sub_decompress () {
@@ -60,10 +66,12 @@ function sub_help () {
 cat <<"EOF"
 
 Usage: apvault.sh <subcommand> <path> [options]
-Make sure you review bannedKeywords.lst to fit your needs, it is very opinionated by default!
+Make sure you review definitions/bannedKeywords.lst to fit your needs, it is very opinionated by default!
 
 Examples:
-apvault.sh lint-roll <path> [--dry-run]		Deletes unwanted files, see definitions in bannedKeywords.lst and derivedContent.lst.
+apvault.sh lint-roll <path> [--dry-run]		Deletes unwanted files/folders, see definitions in bannedKeywords.lst and derivedContent.lst.
+
+apvault.sh flatten <path> [--dry-run]    Removes folders like 'Videos/' or 'Pictures/' and brings content up one level.
 
 apvault.sh decompress <path>			Recursively decompresses all .zip, .rar, .7z archives in the path.
 
