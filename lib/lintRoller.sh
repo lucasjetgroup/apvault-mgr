@@ -137,7 +137,6 @@ function lintRoller.lintRollByPath () {
 		    ;;
     		    * )
        		 	echo "APVault: Skipping flatten."
-        		return 0
     		;;
 		esac
 	echo
