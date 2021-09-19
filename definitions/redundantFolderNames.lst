@@ -3,11 +3,25 @@
 # Copyright 2021 kermie@arcticpornvault.org
 #
 # The following are Emacs-style regexes that match the whole name of a directory
+#
+# You can use this to find good candidates for removal:
+# find -type d | awk -F"/" '{ print $NF }' | sort | uniq -ic | sort -n | tail -n 30
 ####################
+
 \/video\(\(s\)\|\(z\)\)?
 \/vid\(\(s\)\|\(z\)\)?
+\/v
+\/files?
 \/picture\(\(s\)\|\(z\)\)?
+\/picture\ ?set\(\(s\)\|\(z\)\)?
 \/pic\(\(s\)\|\(z\)\)?
-\/image\(\(s\)\|\(z\)\)?
-\/img\(\(s\)\|\(z\)\)?
+\/pic\ ?set\(\(s\)\|\(z\)\)?
 \/photo\(\(s\)\|\(z\)\)?
+\/photo\ ?set\(\(s\)\|\(z\)\)?
+\/image\(\(s\)\|\(z\)\)?
+\/image\ ?set\(\(s\)\|\(z\)\)?
+\/img\(\(s\)\|\(z\)\)?
+\/img\ ?set\(\(s\)\|\(z\)\)?
+\/pix
+\/p
+\/i
