@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Absolute path to your collection dirs.
-Vault_Videos_Path="/data/Videos"
-Vault_Images_Path="/data/Pictures"
+Vault_Videos_Path="/mnt/encrypted/APVault/Videos"
+Vault_Images_Path="/mnt/encrypted/APVault/Pictures"
 
 # Change to true when configured. Make sure you review definitions/bannedKeywords.lst and remove anything you want to keep!
-isConfigured=false
+isConfigured=true
 
 # Do not edit below this line.
 ####################
