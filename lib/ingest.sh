@@ -64,7 +64,7 @@ function ingest.ingestByPathInteractive () {
 	if [[ "${targetPath: -1}" == '/' ]]; then
 		mvTarget="*"
 	fi
-	mv -v --no-clobber "$targetPath""$mvTarget" "$vaultVideosPath"/"$VAULT_PATH"
+	mv -v --no-clobber "$targetPath"$mvTarget "$vaultVideosPath"/"$VAULT_PATH"
 	if [[ -d "$targetPath" ]]; then
 		#there are directory name conflicts, use rsync to copy what we can, leaving what we can't
 		rsync -ahmP --ignore-existing --remove-source-files "$targetPath" "$vaultVideosPath"/"$VAULT_PATH";
