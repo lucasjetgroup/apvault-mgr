@@ -1,5 +1,20 @@
 #!/bin/bash
+# Grab a copy from git
+$ git clone https://github.com/kermieisinthehouse/apvault-mgr
 
+# Ingest a path's contents into the vault, you will be prompted for a destination.
+# This automatically runs lint-roller and decompression.
+$ ./apvault ingest MyFavoriteCamgirl/
+
+# Run the lint roller on a path
+$ ./apvault lint-roll Downloads/
+
+# Recursively decompress all archives in a directory
+$ ./apvault decompress Photo_Archives_2009/
+
+# Recursively move all images to a new path, keeping directory structure
+$ ./apvault copy-images MyMixedMedia/ MyPhotos/
+$ mv MyMixedMedia MyVideos
 # Absolute path to your collection dirs.
 Vault_Videos_Path="/data/Videos"
 Vault_Images_Path="/data/Pictures"
